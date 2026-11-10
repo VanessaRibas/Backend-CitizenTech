@@ -21,4 +21,44 @@ public class EventoService {
     public List<Evento> listar() {
         return repository.findAll();
     }
+    public Evento buscarPorId(Long id) {
+
+    return repository.findById(id)
+
+            .orElseThrow(() -> new RuntimeException("Evento não encontrado"));
+
+    }
+    
+    public Evento atualizar(Long id, Evento eventoAtualizado) {
+
+        Evento eventoExistente = buscarPorId(id);
+    
+        eventoExistente.setTitulo(eventoAtualizado.getTitulo());
+
+        eventoExistente.setDescricao(eventoAtualizado.getDescricao());
+
+        eventoExistente.setTipo(eventoAtualizado.getTipo());
+
+        eventoExistente.setEndereco(eventoAtualizado.getEndereco());
+
+        eventoExistente.setLatitude(eventoAtualizado.getLatitude());
+
+        eventoExistente.setLongitude(eventoAtualizado.getLongitude());
+
+        eventoExistente.setDataRegistro(eventoAtualizado.getDataRegistro());
+
+        eventoExistente.setStatus(eventoAtualizado.getStatus());
+    
+        return repository.save(eventoExistente);
+
+    }
+    
+    public void deletar(Long id) {
+
+        Evento evento = buscarPorId(id);
+
+        repository.delete(evento);
+
+    }
+ 
 }

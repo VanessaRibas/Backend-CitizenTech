@@ -25,4 +25,18 @@ public class EventoController {
     public List<Evento> listar() {
         return service.listar();
     }
+    @GetMapping("/{id}")
+    public Evento buscarPorId(@PathVariable Long id) {
+        return service.buscarPorId(id);
+    }
+    
+    @PutMapping("/{id}")
+    public Evento atualizar(@PathVariable Long id, @RequestBody Evento evento) {
+        return service.atualizar(id, evento);
+    }
+    
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id) {
+        service.deletar(id);
+    }
 }

@@ -26,4 +26,43 @@ public class AlertaService {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Alerta não encontrado"));
     }
+    
+    public Alerta atualizar(Long id, Alerta alertaAtualizado) {
+
+        Alerta alertaExistente = buscarPorId(id);
+    
+        alertaExistente.setTitulo(alertaAtualizado.getTitulo());
+
+        alertaExistente.setDescricao(alertaAtualizado.getDescricao());
+
+        alertaExistente.setTipo(alertaAtualizado.getTipo());
+
+        alertaExistente.setNivelPrioridade(alertaAtualizado.getNivelPrioridade());
+
+        alertaExistente.setEndereco(alertaAtualizado.getEndereco());
+
+        alertaExistente.setLatitude(alertaAtualizado.getLatitude());
+
+        alertaExistente.setLongitude(alertaAtualizado.getLongitude());
+
+        alertaExistente.setOrigemDado(alertaAtualizado.getOrigemDado());
+
+        alertaExistente.setNivelConfianca(alertaAtualizado.getNivelConfianca());
+
+        alertaExistente.setDataRegistro(alertaAtualizado.getDataRegistro());
+
+        alertaExistente.setAtivo(alertaAtualizado.getAtivo());
+    
+        return repository.save(alertaExistente);
+
+    }
+    
+    public void deletar(Long id) {
+
+        Alerta alerta = buscarPorId(id);
+
+        repository.delete(alerta);
+
+    }
+ 
 }

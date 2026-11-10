@@ -47,6 +47,22 @@ public class AlertaController {
         return service.buscarPorId(id);
 
     }
+    @PutMapping("/{id}")
+
+    public Alerta atualizar(@PathVariable Long id, @RequestBody Alerta alerta) {
+
+        return service.atualizar(id, alerta);
+
+    }
+    
+    @DeleteMapping("/{id}")
+
+    public void deletar(@PathVariable Long id) {
+
+        service.deletar(id);
+
+    }
+ 
 
 }
  
