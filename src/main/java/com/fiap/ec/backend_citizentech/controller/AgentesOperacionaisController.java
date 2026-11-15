@@ -1,5 +1,4 @@
 package com.fiap.ec.backend_citizentech.controller;
-
 import com.fiap.ec.backend_citizentech.model.AgentesOperacionais;
 import com.fiap.ec.backend_citizentech.service.AgentesOperacionaisService;
 import org.springframework.web.bind.annotation.*;
