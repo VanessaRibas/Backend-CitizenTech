@@ -8,6 +8,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/eventos")
 @CrossOrigin
+public class EventoController {
 
     private final EventoService service;
 
@@ -24,6 +25,7 @@ import java.util.List;
     public List<Evento> listar() {
         return service.listar();
     }
+
     @GetMapping("/{id}")
     public Evento buscarPorId(@PathVariable Long id) {
         return service.buscarPorId(id);
