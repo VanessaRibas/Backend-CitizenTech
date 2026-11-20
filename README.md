@@ -14,6 +14,7 @@ Em ambientes urbanos densos, pessoas com deficiência (PCD) — especialmente ca
 - **Acionamento de emergência:** solicitação de apoio, resgate ou despacho de viatura/SAMU/responsável quando o usuário se encontra em área desprotegida.
 
 A arquitetura é dividida em duas camadas integradas:
+
 - **Backend (Java + Spring Boot):** ingere e consolida dados provenientes de sensores (reais ou simulados), bases públicas e registros comunitários ou da rede de apoio, realiza a persistência em banco de dados e expõe uma API REST com priorização de alertas, rastreabilidade de origem e indicador de nível de confiança.
 - **Frontend Mobile (React Native):** consome a API REST para prover experiências específicas por perfil (**PCD**, **Rede de Apoio** e **Defesa Civil**), incluindo visualização em mapa em tempo real, rotas dinâmicas, alertas regionais e acionamento de SOS.
 
@@ -23,9 +24,9 @@ A arquitetura é dividida em duas camadas integradas:
 
 | Recurso | Link |
 | :--- | :--- |
-| **Repositório Backend (Spring Boot)** | [https://github.com/VanessaRibas/Backend-CitizenTech](https://github.com/VanessaRibas/Backend-CitizenTech) |
-| **Repositório Frontend (React Native)** | [https://github.com/VanessaRibas/Front-end-CitizenTech](https://github.com/VanessaRibas/Front-end-CitizenTech) |
-| **Vídeo de Demonstração** | [https://youtu.be/tYD78cd5tSg?si=UsVxuoTHq6u60d_D](https://youtu.be/tYD78cd5tSg?si=UsVxuoTHq6u60d_D) |
+| **Repositório Backend (Spring Boot)** | [Backend-CitizenTech](https://github.com/VanessaRibas/Backend-CitizenTech) |
+| **Repositório Frontend (React Native)** | [Front-end-CitizenTech](https://github.com/VanessaRibas/Front-end-CitizenTech) |
+| **Vídeo de Demonstração** | [Assistir à demonstração](https://youtu.be/tYD78cd5tSg?si=UsVxuoTHq6u60d_D) |
 
 ---
 
@@ -35,15 +36,20 @@ O serviço em Spring Boot centraliza as regras de negócio, a persistência de d
 
 1. **Gerenciamento de Usuários e Perfis (`PCD`, `CONTATO`, `ADMIN`):**
    - Administração de contas e perfis de acesso, incluindo a atualização dinâmica do tipo de deficiência no perfil PCD (como mobilidade reduzida/cadeirante ou deficiência visual) para adequação de rotas alternativas.
+
 2. **Gestão da Rede de Apoio e Contatos de Emergência:**
    - Vinculação entre usuários, perfis PCD e contatos de emergência, viabilizando o monitoramento de múltiplos PCDs por um mesmo membro da rede de apoio, acompanhamento de localização em tempo real e envio de eventos.
+
 3. **Ingestão, Persistência e Priorização de Alertas:**
    - Consolidação de ocorrências oriundas de sensores, fontes públicas e relatos da comunidade/rede de apoio, expondo endpoints REST que ordenam e priorizam alertas com indicação explícita da **origem** e do **nível de confiança** de cada informação.
+
 4. **Fluxo Operacional da Defesa Civil:**
    - Recebimento de eventos submetidos para conferência e validação, confirmação de ocorrências para exibição nos dispositivos e disparo de alertas/notificações segmentadas por região.
+
 5. **Tratamento de Chamados SOS:**
    - Registro e propagação de sinais de emergência disparados pelo botão de SOS do usuário PCD, permitindo notificação imediata à rede de apoio e suporte ao despacho de viaturas, SAMU ou responsáveis.
-6. **Suporte a Decisão e Mobilidade Dinâmica:**
+
+6. **Suporte à Decisão e Mobilidade Dinâmica:**
    - Disponibilização de dados estruturados de riscos, pontos de apoio/abrigos e rotas para sustentar as estratégias de deslocamento e contingência na aplicação mobile.
 
 ---
@@ -51,11 +57,24 @@ O serviço em Spring Boot centraliza as regras de negócio, a persistência de d
 ## Execução do Backend
 
 ### Pré-requisitos
-- **Java (JDK)** compatível com o projeto configurado em Spring Boot.
-- **IDE Java** (IntelliJ IDEA, Eclipse ou VS Code) ou ferramenta de build (Maven/Gradle).
-- **Banco de dados** configurado conforme as propriedades da aplicação.
+
+- **Java (JDK):** compatível com o projeto configurado em Spring Boot.
+- **IDE Java:** VS Code, IntelliJ IDEA ou Eclipse, ou ferramenta de build (Maven/Gradle).
+- **Banco de dados:** configurado conforme as propriedades da aplicação.
 
 ### Passo a Passo
+
 1. **Clonar o repositório:**
+
    ```bash
-   git clone [https://github.com/VanessaRibas/Backend-CitizenTech.git](https://github.com/VanessaRibas/Backend-CitizenTech.git)
+   git clone https://github.com/VanessaRibas/Backend-CitizenTech.git
+### **Executando a Aplicação pela IDE**
+
+2. Abra o projeto na sua IDE (VS Code, IntelliJ IDEA ou Eclipse) e aguarde o carregamento das dependências e do JDK.
+
+3. Abra o arquivo `BackendCitizentechApplication.java`, localizado em `src/main/java/...`.
+
+4. Execute a aplicação utilizando a opção **Java Run**, conforme sua IDE:
+   - **VS Code:** clique em `Run` acima do método `main` ou pressione `F5`.
+   - **IntelliJ IDEA:** clique no ícone verde de `Run` ao lado da classe ou do método `main`, ou clique com o botão direito no arquivo e selecione `Run 'BackendCitizentechApplication.main()'`.
+   - **Eclipse:** clique com o botão direito em `BackendCitizentechApplication.java` e selecione `Run As > Java Application`.
